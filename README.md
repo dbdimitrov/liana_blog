@@ -49,14 +49,13 @@ From there you can describe liana tasks in plain words, such as "compare interac
 LRIC and the Inflow score are both designed for spatial technologies that resolve individual cells, such as Atera, CosMx, Xenium, and MERFISH.
 Both examples below use the same MERFISH section of the adult mouse brain ([Yao et al., 2023](https://doi.org/10.1038/s41586-023-06808-9)) and follow Ntf3→Ntrk3 signalling from glutamatergic neurons to neuroblasts.
 
-**LRIC** (`li.mt.lric`) extends the cross pair-correlation function by weighting sender cells by their ligand expression and receiver cells by their receptor expression, showing at which distances a ligand-receptor pair is enriched or depleted.
-It also separates how much of that comes from the cell types sitting together and how much from the expression of the ligand and receptor.
-Restricted to the hippocampus, Ntf3→Ntrk3 is enriched around 40–60 µm, supported by both co-localisation of the two cell types and expression of the ligand and receptor (see the [LRIC tutorial](https://liana.readthedocs.io/en/stable/tutorials/notebooks/LRIC_tutorial.html)).
+**LRIC** (`li.mt.lric`) shows at which distances a ligand-receptor pair is enriched, and whether that comes from the cell types sitting together or from the ligand and receptor expression.
+For example, in the hippocampus, Ntf3→Ntrk3 is enriched around 40–60 µm, driven by both cell-type co-localisation and ligand-receptor expression (see the [LRIC tutorial](https://liana.readthedocs.io/en/stable/tutorials/notebooks/LRIC_tutorial.html)).
 
 <img src="img/lric_ntf3_ntrk3.png" style="max-width: 100%;" alt="LRIC curve for Ntf3 to Ntrk3 from glutamatergic neurons to neuroblasts in the hippocampus, split into co-localisation and expression terms." />
 
 **The Inflow score** (`li.mt.inflow`) measures how strongly each cell receives a ligand signal from a given sender cell type in its spatial neighbourhood.
-Across the whole section, Ntf3→Ntrk3 inflow from glutamatergic neurons concentrates along the dentate gyrus of the hippocampus (outlined), and neuroblasts are the cell type that receives it most (see the [Inflow tutorial](https://liana.readthedocs.io/en/stable/tutorials/notebooks/inflow_score.html)).
+Across the whole section, Ntf3→Ntrk3 inflow from glutamatergic neurons concentrates along the dentate gyrus of the hippocampus (outlined) (see the [Inflow tutorial](https://liana.readthedocs.io/en/stable/tutorials/notebooks/inflow_score.html)).
 
 <img src="img/inflow_ntf3_ntrk3.png" width="70%" style="max-width: 70%;" alt="Spatial map of Ntf3 to Ntrk3 inflow from glutamatergic neurons in a coronal mouse brain section, with the hippocampus outlined." />
 
