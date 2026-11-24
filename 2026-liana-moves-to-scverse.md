@@ -6,7 +6,7 @@ author = "Muskan Hashim, Daniel Dimitrov"
 draft = false
 +++
 
-[LIANA+](https://github.com/scverse/liana) has moved from `saezlab/liana-py` into the scverse GitHub organization where it now lives as `scverse/liana` and continues to be maintained by Daniel Dimitrov.
+[LIANA+](https://github.com/scverse/liana) has moved from `saezlab/liana-py` into the scverse GitHub organization where it now lives as `scverse/liana` and continues to be maintained by [Daniel Dimitrov](https://github.com/dbdimitrov).
 Alongside the move, version 2.0 brings LIANA+ in line with the conventions the rest of the ecosystem follows.
 
 <img src="/img/blog/liana_x_scverse_overview.svg" style="max-width: 100%;" alt="LIANA+ x scverse Overview." />
@@ -15,13 +15,15 @@ Alongside the move, version 2.0 brings LIANA+ in line with the conventions the r
 
 [LIANA+](https://doi.org/10.1038/s41556-024-01469-w) is a framework for studying cell-cell communication in single-cell and spatially resolved omics data (including multimodal data).
 It works directly on [AnnData](https://anndata.scverse.org/) and [MuData](https://github.com/scverse/mudata) objects just like [scanpy](https://scanpy.scverse.org/) and [squidpy](https://squidpy.readthedocs.io/en/stable/) do.
-At its core, LIANA+ re-implements a range of established ligand-receptor methods and lets you combine their results into a consensus ranking with `li.mt.rank_aggregate`.
+LIANA+ combines established ligand-receptor methods with its own algorithms and consensus options, all of which work natively on multi-omics data.
 For prior knowledge it draws on [OmniPath](https://omnipathdb.org/) with [MetalinksDB](https://github.com/biocypher/metalinks) adding metabolite-receptor interactions.
 For comparisons across samples and conditions LIANA+ connects to [MOFA+](https://biofam.github.io/MOFA2/) and [Tensor-cell2cell](https://earmingol.github.io/cell2cell/) to find communication patterns without a predefined contrast.
-When there is a specific contrast in mind, it works with [pyCrossTalkeR](https://github.com/CostaLab/pyCrossTalkeR) for network-based differential analysis and with [corneto](https://github.com/saezlab/corneto) to infer downstream signalling networks.
+When there is a specific contrast in mind, it builds on [PyDESeq2](https://github.com/scverse/pydeseq2) to prioritize differentially expressed interactions, works with [pyCrossTalkeR](https://github.com/CostaLab/pyCrossTalkeR) for network-based differential analysis and with [corneto](https://github.com/saezlab/corneto) to infer downstream signalling networks.
 If you are not sure where to start, the [decision tree](https://github.com/scverse/liana#decision-tree) in the README leads from your type of data to a suitable method and its tutorial.
+LIANA+ now also ships an Agent Skill for [Claude Code](https://claude.com/claude-code) that builds on this decision tree and user-inspired scenarios to pick the best method for your data and goals.
 
-Over the past year LIANA+ has also gained an Agent Skill for [Claude Code](https://claude.com/claude-code) along with two spatial methods for data at single-cell resolution.
+Over the past year LIANA+ has also gained two spatial methods for data at single-cell resolution.
+
 ## An Agent Skill helps Claude Code choose the right method
 
 LIANA+ now ships with an [Agent Skill](https://docs.claude.com/en/docs/claude-code/skills) for Claude Code encoding the decision tree so that the agent picks a method that suits your data with the right defaults and knows where the results land.
@@ -37,7 +39,7 @@ From there you can describe liana tasks in plain words, such as "compare interac
 
 ## LRIC and the Inflow score target single-cell resolution spatial data
 
-LRIC and the Inflow score are both designed for spatial technologies that resolve individual cells, such as MERFISH.
+LRIC and the Inflow score are both designed for spatial technologies that resolve individual cells, such as Atera, CosMx, Xenium, and MERFISH.
 
 - **LRIC** (`li.mt.lric`) extends the cross pair-correlation function by weighting sender cells by their ligand expression and receiver cells by their receptor expression to show at which distances a ligand-receptor pair is enriched or depleted (see the [LRIC tutorial](https://liana.readthedocs.io/en/stable/tutorials/notebooks/LRIC_tutorial.html)).
 - **The Inflow score** (`li.mt.inflow`) measures how strongly each cell receives ligand signals from its spatial neighborhood while accounting for spatial proximity and the cell type sending the signal (see the [Inflow tutorial](https://liana.readthedocs.io/en/stable/tutorials/notebooks/inflow_score.html)).
@@ -78,7 +80,7 @@ Both methods were added fairly recently so their API may still change slightly.
 
 ## Version 2.0 follows scverse conventions
 
-The namespaces now mirror the scanpy layout (`li.pp`, `li.mt`, `li.pl`, `li.ms`, `li.ds` and `li.rs`).
+The namespaces now more closely mirror the scanpy layout (`li.pp`, `li.mt`, `li.pl`, `li.ms`, `li.ds` and `li.rs`).
 `use_raw` now defaults to `False` as it does in squidpy and [decoupler](https://decoupler.readthedocs.io/en/latest/) so methods read from `adata.X` unless you tell them otherwise.
 Under the hood, the codebase is synced with the [scverse package template](https://github.com/scverse/cookiecutter-scverse) and type-checked with [mypy](https://github.com/python/mypy) in CI.
 The release also includes an audit of the codebase with several fixes that affect results so numbers may shift when you upgrade (this is intended).
