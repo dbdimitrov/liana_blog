@@ -1,4 +1,17 @@
+<!--
+Front matter for the scverse website (scverse.org/blog); paste at the top of the post and switch image paths back to /img/blog/:
++++
+title = "LIANA+ moves to scverse"
+date = 2026-11-09T00:00:00+01:00
+description = "LIANA+ 2.0 lives in the scverse organization and follows scverse conventions."
+author = "Muskan Hashim, Daniel Dimitrov"
+draft = false
++++
+-->
+
 # LIANA+ moves to scverse
+
+*Muskan Hashim, [Daniel Dimitrov](https://github.com/dbdimitrov) · 9 November 2026*
 
 [LIANA+](https://github.com/scverse/liana) has moved from `saezlab/liana-py` into the scverse GitHub organization where it now lives as `scverse/liana` and continues to be maintained by [Daniel Dimitrov](https://github.com/dbdimitrov).
 Alongside the move, version 2.0 brings LIANA+ in line with the conventions the rest of the ecosystem follows.
